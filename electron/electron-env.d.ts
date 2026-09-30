@@ -29,9 +29,13 @@ interface Window {
     setPanelSize(width: number, height: number): void
     setPanelPosition(x: number, y: number): void
     setPanelDragging(enabled: boolean): void
-    onAicCommand(callback: (command: 'undo' | 'redo' | 'clear') => void): () => void
+    setKeybinds(bindings: Record<string, string>): void
+    setShortcutCapture(enabled: boolean): void
+    prepareNativeColorPicker(): boolean
+    finishNativeColorPicker(): void
+    onShortcutCommand(callback: (command: string) => void): () => void
     setSelecting(enabled: boolean): void
-    setClickableLines(lines: Array<{ x1: number; y1: number; x2: number; y2: number }>): void
+    setClickableLines(lines: Array<{ x1: number; y1: number; x2: number; y2: number; radius?: number }>): void
     onTargetWindowChange(callback: (isTarget: boolean) => void): () => void
   }
 }
